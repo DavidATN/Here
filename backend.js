@@ -1,5 +1,5 @@
-<script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
-<script>
+{/*<script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>*/}
+{/*<script>*/}
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyB7Y5DCEpGeuz37UwuD0humCAHUOW2uJI8",
@@ -9,7 +9,7 @@
     messagingSenderId: "766933243175"
   };
   firebase.initializeApp(config);
-</script>
+// </script>
 
 var database = firebase.database();
 var userId = 0;
@@ -20,7 +20,7 @@ var chatRooms = [0];
 function userLogin(userId, name, range = 10) {
   firebase.database().ref('Users/' + userId).set({
     nickname: name,
-    chatRooms: 0
+    chatRooms: 0,
     range : 10
   });
   userId=userId;
@@ -37,9 +37,9 @@ function getChatRooms(){
 //create a hash of a chatRoomId, give a max number of users, a title, and the users id
 function createChatRoom(title, userId, maxNumUsers=10, chatRoomID){
   firebase.database().ref('/Chat_rooms/' + chatRoomID).set({
-    title: title
-    ownerID: userID
-    maxNumUsers:maxNumUsers
+    title: title,
+    ownerID: userID,
+    maxNumUsers:maxNumUsers,
     messages:["first message"]
   });
 }
