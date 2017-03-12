@@ -1,14 +1,14 @@
 {/*<script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>*/}
 {/*<script>*/}
   // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyB7Y5DCEpGeuz37UwuD0humCAHUOW2uJI8",
-    authDomain: "hear-9083d.firebaseapp.com",
-    databaseURL: "https://hear-9083d.firebaseio.com",
-    storageBucket: "hear-9083d.appspot.com",
-    messagingSenderId: "766933243175"
-  };
-  firebase.initializeApp(config);
+  // var config = {
+  //   apiKey: "AIzaSyB7Y5DCEpGeuz37UwuD0humCAHUOW2uJI8",
+  //   authDomain: "hear-9083d.firebaseapp.com",
+  //   databaseURL: "https://hear-9083d.firebaseio.com",
+  //   storageBucket: "hear-9083d.appspot.com",
+  //   messagingSenderId: "766933243175"
+  // };
+  // firebase.initializeApp(config);
 // </script>
 
 var database = firebase.database();

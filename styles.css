@@ -92,8 +92,9 @@ a:hover { text-decoration:underline; }
 }
 
 .chat-room {
-
+    font-size: medium;
 }
 .user{
     float: left;
+    font-weight: bolder;
 }
