@@ -1,10 +1,11 @@
 #lobby-container {
     height: 475px;
-    max-width: 325px;
+    max-width: 500px;
     padding: 10px;
     border: 1px solid #ccc;
-    background-color: #fff;
+    background-color: #58E2C9;
     margin: auto auto;
+    margin-top: 50px;
     text-align: center;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -12,4 +13,87 @@
     -webkit-box-shadow: 0 5px 25px #666;
     -moz-box-shadow: 0 5px 25px #666;
     box-shadow: 0 5px 25px #666;
+}
+
+body{
+    background-color: #E0E0E0 ;
+    color: white;
+    margin: auto;
+    text-align:center;
+    font-family: "Courier New", Courier, monospace;
+}
+/*body {*/
+    /*font:12px arial;*/
+    /*color: #222;*/
+    /*text-align:center;*/
+    /*padding:35px; }*/
+
+/*form, p, span {*/
+    /*margin:0;*/
+    /*padding:0; }*/
+
+/*input { font:12px arial; }*/
+
+/*a {*/
+    /*color:#0000FF;*/
+    /*text-decoration:none; }*/
+
+a:hover { text-decoration:underline; }
+
+/*#wrapper, #loginform {*/
+    /*margin:0 auto;*/
+    /*padding-bottom:25px;*/
+    /*background:#EBF4FB;*/
+    /*width:504px;*/
+    /*border:1px solid #ACD8F0; }*/
+
+/*#loginform { padding-top:18px; }*/
+
+/*#loginform p { margin: 5px; }*/
+
+#chatbox {
+    text-align:left;
+    margin:0 auto;
+    margin-bottom:25px;
+    padding:10px;
+    background:#fff;
+    height:200px;
+    width:400px;
+    border:1px solid darkgray;
+    overflow:auto;
+    -webkit-box-shadow: 0 5px 25px #666;
+    -moz-box-shadow: 0 5px 25px #666;
+    box-shadow: 0 5px 25px #666;}
+
+#usermsg {
+    width:395px;
+    border:1px solid #ACD8F0; }
+
+#submit { width: 60px; }
+
+.error { color: #ff0000; }
+
+#menu { padding:12.5px 25px 12.5px 25px; }
+
+.welcome {
+    float:left;
+    font-weight: bold;
+}
+
+.settings {
+    float:right;
+}
+
+.msgln { margin:0 0 2px 0; }
+
+.create-room{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.chat-room {
+
+}
+.user{
+    float: left;
 }
