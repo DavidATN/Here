@@ -1,0 +1,64 @@
+#lobby-container {
+    height: 475px;
+    max-width: 500px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #58E2C9;
+    margin: auto auto;
+    margin-top: 50px;
+    text-align: center;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 5px 25px #666;
+    -moz-box-shadow: 0 5px 25px #666;
+    box-shadow: 0 5px 25px #666;
+}
+
+body{
+    background-color: #E0E0E0 ;
+    color: white;
+    margin: auto;
+    text-align:center;
+    font-family: "Courier New", Courier, monospace;
+}
+
+a:hover { text-decoration:underline; }
+
+#chatbox {
+    text-align:left;
+    margin:0 auto;
+    margin-bottom:25px;
+    padding:10px;
+    background:#fff;
+    height:200px;
+    width:400px;
+    border:1px solid darkgray;
+    overflow:auto;
+    -webkit-box-shadow: 0 5px 25px #666;
+    -moz-box-shadow: 0 5px 25px #666;
+    box-shadow: 0 5px 25px #666;}
+
+
+.welcome {
+    float:left;
+    font-weight: bold;
+}
+
+.settings {
+    float:right;
+}
+
+
+.create-room{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.chat-room {
+    font-size: medium;
+}
+.user{
+    float: left;
+    font-weight: bolder;
+}
