@@ -1,69 +1,141 @@
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Welcome to Firebase Hosting</title>
-    <style media="screen">
-      body {
-        font-family: Roboto, Arial, sans-serif;
-        background: #ECEFF1;
-        color: rgba(0,0,0,0.87);
-      }
+<<<<<<< HEAD
+<title>Hear</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1,h2{font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+p {line-height: 2}
+.bgimg, .bgimg2 {
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+.bgimg {background-image: url("map01_tinted.png")}
+.bgimg2 {background-image: url("milw01_tinted.jpg")}
+</style>
+<body>
 
-      a {
-        color: rgb(3,155,229);
-      }
+<!-- Header / Home-->
+<header class="w3-display-container w3-wide bgimg w3-grayscale-min" id="home">
+  <div class="w3-display-middle w3-text-white w3-center">
+    <h1 class="w3-jumbo">Hear-</h1>
+    <h2>Who's Around you.</h2>
+    <h5><b>Location Based Chat Service</b></h5>
+  </div>
 
-      #message {
-        max-width: 400px;
-        margin: 40px auto;
-        box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2),0 1px 1px 0 rgba(0,0,0,0.14),0 2px 1px -1px rgba(0,0,0,0.12);
-        border-radius: 2px;
-        background: white;
-        padding: 16px 24px;
-      }
+    <!-- START Initilization script-->
+      <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
+    <script>
+        var config = {
+        apiKey: "AIzaSyB7Y5DCEpGeuz37UwuD0humCAHUOW2uJI8",
+        authDomain: "hear-9083d.firebaseapp.com",
+        databaseURL: "https://hear-9083d.firebaseio.com",
+        storageBucket: "hear-9083d.appspot.com",
+        messagingSenderId: "766933243175"
+        };
+        firebase.initializeApp(config);
+    </script>
+      <!-- END Initilization script -->
+    <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
+    <script type="text/javascript">
+      // FirebaseUI config.
+      var uiConfig = {
+        signInSuccessUrl: '<url-to-redirect-to-on-success>',
+        signInOptions: [
+          // Leave the lines as is for the providers you want to offer your users.
+          firebase.auth.EmailAuthProvider.PROVIDER_ID,
+          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+          firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+          firebase.auth.TwitterAuthProvider.PROVIDER_ID
+          //firebase.auth.GithubAuthProvider.PROVIDER_ID,
 
-      #message h1 {
-        font-size: 22px;
-        font-weight: 500;
-        text-align: center;
-        margin: 0 0 16px;
-      }
+        ],
+        // Terms of service url.
+        tosUrl: '<your-tos-url>'
+      };
 
-      #message p {
-        font-weight: 300;
-        line-height: 150%;
-      }
+      // Initialize the FirebaseUI Widget using Firebase.
+      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+      // The start method will wait until the DOM is loaded.
+      ui.start('#firebaseui-auth-container', uiConfig);
+    </script>
+</header>
 
-      #message ul {
-        list-style: none;
-        margin: 16px 0 0;
-        padding: 0;
-        text-align: center;
-      }
+<!-- Navbar (sticky bottom) -->
+<div class="w3-bottom w3-hide-small">
+  <div class="w3-bar w3-white w3-center w3-padding-8 w3-opacity-min w3-hover-opacity-off">
+    <a href="#home" style="width:25%" class="w3-bar-item w3-button">Home</a>
+    <a href="#about" style="width:25%" class="w3-bar-item w3-button">About Hear</a>
+    <a href="#more" style="width:25%" class="w3-bar-item w3-button">Technicals Specs</a>
+    <a href="#sign" style="width:25%" class="w3-bar-item w3-button w3-hover-black">Sign Up/In</a>
+  </div>
+</div>
 
-      #message li a {
-        display: inline-block;
-        padding: 8px;
-        text-transform: uppercase;
-        text-decoration: none;
-        font-weight: 500;
-        background: rgb(3,155,229);
-        color: white;
-        border: 1px solid rgb(3,155,229);
-        border-radius: 3px;
-        font-size: 14px;
-        box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h1>Welcome to Firebase Hosting</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <ul>
-        <li><a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a></li>
-      </ul>
+<!-- About Hear -->
+<div class="w3-container w3-padding-64 w3-blue w3-grayscale-min" id="about">
+  <div class="w3-content">
+    <h1 class="w3-center w3-text-white"><b>Hear</b></h1>
+
+    <p>Hear is a location based chat room service that is completely free, unique, and secure. Change the slider (in the settings pane) to select how far or near you what to chat with people. Hear works across ALL of your devices, no need to download more annoying apps! Notifications and messages sync across ALL of your devices.
+    </p><br>
+    <p class="w3-center"><a href="#more" class="w3-button w3-black w3-round w3-padding-large w3-large">Tell me more!</a></p>
+  </div>
+</div>
+
+<!-- Background photo -->
+<div class="w3-display-container bgimg2">
+  <div class="w3-display-middle w3-text-white w3-center">
+    <h1 class="w3-jumbo">Simple. Secure.</h1><br>
+    <h2>Everywhere.</h2>
+  </div>
+</div>
+
+<!-- Technical information -->
+<div class="w3-container w3-padding-1 w3-blue w3-grayscale-min w3-center" id="more">
+  <div class="w3-content">
+    <h1 class="w3-text-white"><b>Technical Information</b></h1>
+    <img class="w3-round-large w3-grayscale-min" src="gears.png" style="width:10%;margin:64px 0">
+    <div class="w3-row">
+      <div class="w3-half">
+        <h2>Supported Platforms</h2>
+        <p>Chrome - iOS</p>
+        <p>Chrome - Android</p>
+        <p>Chrome - MacOS</p>
+        <p>Chrome - Windows</p>
+        <p>Chrome - ChromeOS</p>
+      </div>
+      <div class="w3-half">
+        <h2>Supported Accounts</h2>
+        <p>Email</p>
+        <p>Google</p>
+        <p>Facebook</p>
+        <p>Twitter</p>
+        <p>GitHub</p>
+      </div>
     </div>
-  </body>
+  </div>
+</div>
+
+<!-- Sign Up/In section -->
+<div class="w3-container w3-padding-64 w3-pale-blue w3-center w3-wide" id="sign">
+  <h1>Welcome.</h1>
+  <p class="w3-large">Hear everyone around you!</p>
+  <!-- firebase Auth UI -->
+    <div id="firebaseui-auth-container"></div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-16">
+
+</footer>
+<div class="w3-hide-small" style="margin-bottom:32px">&nbsp;</div>
+
+</body>
 </html>
