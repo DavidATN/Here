@@ -22,34 +22,8 @@ body{
     text-align:center;
     font-family: "Courier New", Courier, monospace;
 }
-/*body {*/
-    /*font:12px arial;*/
-    /*color: #222;*/
-    /*text-align:center;*/
-    /*padding:35px; }*/
-
-/*form, p, span {*/
-    /*margin:0;*/
-    /*padding:0; }*/
-
-/*input { font:12px arial; }*/
-
-/*a {*/
-    /*color:#0000FF;*/
-    /*text-decoration:none; }*/
 
 a:hover { text-decoration:underline; }
-
-/*#wrapper, #loginform {*/
-    /*margin:0 auto;*/
-    /*padding-bottom:25px;*/
-    /*background:#EBF4FB;*/
-    /*width:504px;*/
-    /*border:1px solid #ACD8F0; }*/
-
-/*#loginform { padding-top:18px; }*/
-
-/*#loginform p { margin: 5px; }*/
 
 #chatbox {
     text-align:left;
@@ -65,15 +39,6 @@ a:hover { text-decoration:underline; }
     -moz-box-shadow: 0 5px 25px #666;
     box-shadow: 0 5px 25px #666;}
 
-#usermsg {
-    width:395px;
-    border:1px solid #ACD8F0; }
-
-#submit { width: 60px; }
-
-.error { color: #ff0000; }
-
-#menu { padding:12.5px 25px 12.5px 25px; }
 
 .welcome {
     float:left;
@@ -84,7 +49,6 @@ a:hover { text-decoration:underline; }
     float:right;
 }
 
-.msgln { margin:0 0 2px 0; }
 
 .create-room{
     margin-left: 20px;
