@@ -4,43 +4,45 @@
     <meta charset="UTF-8">
     <title>Hear: Lobby</title>
     <link rel="stylesheet" href="styles.css"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 </head>
 <body>
-    <header>
         <div class="row">
             <div class="span6 offset3">
                 <div id="lobby-container" class="clearfix">
-                    <span class="welcome">Lobby <b></b></span>
-                    <span class="settings"><a id="settings">Settings</a></span>
-                    <br><br>
-                    <!--TODO: change so it pulls up the user's actual nickname-->
-                    <span class="user">Welcome user</span>
-                    <br><br>
-                    <button type='button' onclick='add()' class='create-room' id='btn-create-room-prompt'>Create New Room</button>
-                    <br><br><br><br><br>
 
-                    <div id="chatbox">
-                        <div align="center">
-                        <select id="chat-room-list" name="chat-rooms" size="10" style="width:395px">
-                            <option value="1">Example chat room</option>
-                            <option value="2">Futurama Chat</option>
-                        </select>
+                    <div id="chat-rooms" >
+
+                        <div class="card">
+                            <div class="container" align="center">
+                                 <button type='button' onclick='add()' class='w3-button w3-xlarge w3-circle w3-grey w3-card-4' id='btn-create-room'>+</button>
+                            </div>
                         </div>
+
+                        <div class="card">
+                            <div class="container">
+                                <div class="num-box">4</div>
+                                <p padding="30px">UWM Engineering <br> Morgan: Can I get help on...</p>
+                            </div>
+                        </div>
+
                     </div>
+
+                    <div id="map">
+                        <div class="card-nickname">
+                            <p>&ltEditable Nickname here&gt</p>
+                        </div>
+
+                    </div>
+
+
 
                 </div>
 
-                <div id="user-info"></div>
             </div>
         </div>
-    </header>
-    <script>
-        function add() {
-            var list = document.getElementById("chat-room-list");
-            var item = document.createElement("option");
-            item.text ="new chat room";
-            list.add(item);
-        }
-    </script>
+
+
 </body>
 </html>
