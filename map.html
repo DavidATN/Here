@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<script type="text/javascript" src="backend.js"></script>
 <html>
   <head>
     <title>Remove Markers</title>
@@ -34,7 +35,14 @@
     <p>Click on the map to add markers.</p>
     <script>
 
-    
+    var locations = [];
+      rooms = getChatRooms();
+      locations.push({lat: 43.0292059, lng: -87.9093327})
+      rooms.forEach(function(entry) {
+      console.log(entry);
+      locations.push({lat:entry.gps_coordinates.0, lng: entry.gps_coordinates.1, num: entry.maximum_number_users})
+    });
+
 
       // In the following example, markers appear when the user clicks on the map.
       // The markers are stored in an array.
