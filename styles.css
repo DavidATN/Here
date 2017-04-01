@@ -28,6 +28,9 @@ a:hover { text-decoration:underline; }
 p{
     color:black;
 }
+#nname{
+    color:black;
+}
 
 #chat-rooms {
     float: left;

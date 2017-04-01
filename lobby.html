@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hear: Lobby</title>
     <link rel="stylesheet" href="styles.css"/>
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
@@ -12,7 +13,7 @@
             <div class="span6 offset3">
                 <div id="lobby-container" class="clearfix">
 
-              // list of chat rooms
+               <!--list of chat rooms-->
                     <div id="chat-rooms" >
 
                         <div class="card">
@@ -21,44 +22,56 @@
                             </div>
                         </div>
 
-                        <div class="card" id="room">
-                            <div class="container">
-                                <div class="num-box">4</div>
-                                <p padding="30px">UWM Engineering <br> Morgan: Can I get help on...</p>
-                            </div>
-                        </div>
+                        <!--<div class="card" id="room">-->
+                            <!--<div class="container">-->
+                                <!--<div class="num-box">4</div>-->
+                                <!--<p padding="30px">UWM Engineering <br> Morgan: Can I get help on...</p>-->
+                            <!--</div>-->
+                        <!--</div>-->
 
                     </div>
-                // div for map/chat area
+
+                <!--div for map/chat area-->
                     <div id="map">
                         <div class="card-nickname">
-                            <p>&ltEditable Nickname here&gt</p>
+                            <p id="nname">&ltEditable Nickname here&gt</p>
                         </div>
 
                     </div>
-
-
 
                 </div>
 
             </div>
         </div>
         <script>
+
             function add() {
                 var listRooms = document.getElementById("chat-rooms");
+
                 var roomCard = document.createElement("div");
+
+
                 var chatText = prompt("Create new chat room: ");
                 roomCard.className="card";
 
-                chatText = chatText.trim();
-//                item.text=chatText;
-//                item.appendChild("p");
-//                var text = document.createElement("p");
-//                text.appendChild(chatText);
-//                item.add(text);
+                var cont = document.createElement("div");
+                cont.className="container";
+
+                var numBox = document.createElement("div");
+                numBox.className="num-box";
+                numBox.innerHTML="0"; //default number of unread messages
+
+                var chTitle = document.createElement("p");
+                chTitle.innerHTML=chatText;
+
+                roomCard.appendChild(cont);
+                cont.appendChild(numBox);
+                cont.appendChild(chTitle);
 
                 listRooms.appendChild(roomCard);
             }
+
+
         </script>
 
 </body>
