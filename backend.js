@@ -8,7 +8,6 @@ var config = {
 };
 
 firebase.initializeApp(config);
-geolocation();
 
 var database = firebase.database();
 var userId = 0;
