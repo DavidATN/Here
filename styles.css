@@ -55,6 +55,8 @@ p{
 }
 
 .num-box{
+    color:black;
+    text-align: center;
     float:left;
     margin-top: 15px;
     margin-right: 10px;
