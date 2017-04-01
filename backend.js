@@ -8,8 +8,7 @@ var config = {
 };
 
 firebase.initializeApp(config);
-//geolocation();
-getChatRooms();
+geolocation();
 
 var database = firebase.database();
 var userId = 0;
@@ -68,6 +67,7 @@ function geolocation() {
     nudge.style.display = "none";
   };
 
+
   var nudgeTimeoutId = setTimeout(showNudgeBanner, 5000);
 
   var geoSuccess = function(position) {
@@ -77,6 +77,7 @@ function geolocation() {
 
     // Do magic with location
     startPos = position;
+    console.log(position);
     document.getElementById('startLat').innerHTML = startPos.coords.latitude;
     document.getElementById('startLon').innerHTML = startPos.coords.longitude;
   };
@@ -90,4 +91,5 @@ function geolocation() {
   };
 
   navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
+
 }

@@ -6,43 +6,64 @@
     <link rel="stylesheet" href="styles.css"/>
     <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
     <script src="backend.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 </head>
 <body>
-    <header>
+        <div id="startLat"></div>
+        <div id="startLon"></div>
         <div class="row">
             <div class="span6 offset3">
                 <div id="lobby-container" class="clearfix">
-                    <span class="welcome">Lobby <b></b></span>
-                    <span class="settings"><a id="settings">Settings</a></span>
-                    <br><br>
-                    <!--TODO: change so it pulls up the user's actual nickname-->
-                    <span class="user">Welcome user</span>
-                    <br><br>
-                    <button type='button' onclick='add()' class='create-room' id='btn-create-room-prompt'>Create New Room</button>
-                    <br><br><br><br><br>
 
-                    <div id="chatbox">
-                        <div align="center">
-                        <select id="chat-room-list" name="chat-rooms" size="10" style="width:395px">
-                            <option value="1">Example chat room</option>
-                            <option value="2">Futurama Chat</option>
-                        </select>
+              // list of chat rooms
+                    <div id="chat-rooms" >
+
+                        <div class="card">
+                            <div class="container" align="center">
+                                 <button type='button' onclick='add()' class='w3-button w3-xlarge w3-circle w3-grey w3-card-4' id='btn-create-room'>+</button>
+                            </div>
                         </div>
+
+                        <div class="card" id="room">
+                            <div class="container">
+                                <div class="num-box">4</div>
+                                <p padding="30px">UWM Engineering <br> Morgan: Can I get help on...</p>
+                            </div>
+                        </div>
+
                     </div>
+                // div for map/chat area
+                    <div id="map">
+                        <div class="card-nickname">
+                            <p>&ltEditable Nickname here&gt</p>
+                        </div>
+
+                    </div>
+
+
 
                 </div>
 
-                <div id="user-info"></div>
             </div>
         </div>
-    </header>
-    <script>
-        function add() {
-            var list = document.getElementById("chat-room-list");
-            var item = document.createElement("option");
-            item.text ="new chat room";
-            list.add(item);
-        }
-    </script>
+        <script>
+            function add() {
+                var listRooms = document.getElementById("chat-rooms");
+                var roomCard = document.createElement("div");
+                var chatText = prompt("Create new chat room: ");
+                roomCard.className="card";
+
+                chatText = chatText.trim();
+//                item.text=chatText;
+//                item.appendChild("p");
+//                var text = document.createElement("p");
+//                text.appendChild(chatText);
+//                item.add(text);
+
+                listRooms.appendChild(roomCard);
+            }
+        </script>
+
 </body>
 </html>
