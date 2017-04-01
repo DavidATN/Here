@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Remove Markers</title>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -13,65 +14,65 @@
         margin: 0;
         padding: 0;
       }
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
     </style>
   </head>
   <body>
     <div id="map"></div>
+    <p>Click on the map to add markers.</p>
     <script>
+
+    
+
+      // In the following example, markers appear when the user clicks on the map.
+      // The markers are stored in an array.
+      // The user can then click an option to hide, show or delete the markers.
       var map;
+      var markers = [];
+
       function initMap() {
+        var haightAshbury = {lat: 43.0292059, lng: -87.9093327};
+
         map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 18,
-          center: new google.maps.LatLng(43.0292059,-87.9093327),
+          zoom: 12,
+          center: haightAshbury,
           mapTypeId: 'roadmap'
         });
 
-        // Create a <script> tag and set the USGS URL as the source.
-        var script = document.createElement('script');
-        // This example uses a local copy of the GeoJSON stored at
-        // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
-        script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
-        document.getElementsByTagName('head')[0].appendChild(script);
+        map.addListener('click', function(event) {
+          var loc = {lat: event.latLng.lat(), lng: event.latLng.lng()};
+          markers.push(loc);
+          addMarker(loc);
+        });
+
+        setMapOnAll();
       }
 
-      // Loop through the results array and place a marker for each
-      // set of coordinates.
+      // Adds a marker to the map and push to the array.
+      function addMarker(location) {
+        var marker = new google.maps.Marker({
+          position: location,
+          map: map
+        });
+        markers.push(location);
+      }
 
-      var locations = [
-       {lat: 43.0292059, lng: -87.9093327},
-       {lat: -33.718234, lng: 150.363181},
-       {lat: -33.727111, lng: 150.371124},
-       {lat: -33.848588, lng: 151.209834},
-       {lat: -33.851702, lng: 151.216968},
-       {lat: -34.671264, lng: 150.863657},
-       {lat: -35.304724, lng: 148.662905},
-       {lat: -36.817685, lng: 175.699196},
-       {lat: -36.828611, lng: 175.790222},
-       {lat: -37.750000, lng: 145.116667},
-       {lat: -37.759859, lng: 145.128708},
-       {lat: -37.765015, lng: 145.133858},
-       {lat: -37.770104, lng: 145.143299},
-       {lat: -37.773700, lng: 145.145187},
-       {lat: -37.774785, lng: 145.137978},
-       {lat: -37.819616, lng: 144.968119},
-       {lat: -38.330766, lng: 144.695692},
-       {lat: -39.927193, lng: 175.053218},
-       {lat: -41.330162, lng: 174.865694},
-       {lat: -42.734358, lng: 147.439506},
-       {lat: -42.734358, lng: 147.501315},
-       {lat: -42.735258, lng: 147.438000},
-       {lat: -43.999792, lng: 170.463352}
-     ]
-
-      window.eqfeed_callback = function(results) {
-        for (var i = 0; i < locations.length; i++) {
-          var latLng = new google.maps.LatLng(locations[i].lat,locations[i].lng);
-          var marker = new google.maps.Marker({
-            position: latLng,
-            label: '2',
-            icon: 'cluster.png',
-            map: map
-          });
+      // Sets the map on all markers in the array.
+      function setMapOnAll(map) {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].setMap(map);
         }
       }
     </script>
