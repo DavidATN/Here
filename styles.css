@@ -89,3 +89,14 @@ p{
     display:block;
     margin: 0 auto;
 }
+
+#chat-view {
+
+    float: left;
+    vertical-align: bottom;
+}
+
+.message-bubble {
+
+
+}
