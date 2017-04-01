@@ -68,7 +68,17 @@ p{
     width: 30px;
 }
 
-#map{
+.mapArea{
+    border: .5px solid black;
+    border-left: white;
+    float:right;
+    width: 75%;
+    min-height: 600px;
+    background-color: white;
+    visibility: hidden;
+}
+
+.chatArea{
     border: .5px solid black;
     border-left: white;
     float:right;
