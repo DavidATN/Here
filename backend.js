@@ -13,6 +13,7 @@ var database = firebase.database();
 var userId = 0;
 var range = 10;
 var chatRooms = [0];
+var currentChat = 0;
 
 //Need Nickname to navigate to lobby screen
 function userLogin(userId, name, range = 10) {
@@ -27,19 +28,30 @@ function userLogin(userId, name, range = 10) {
 
 //Once logged in, get the chat rooms
 function getChatRooms(){
-  return firebase.database().ref('/Messages/').once('value').then(function(snapshot) {
+  return firebase.database().ref('/chat_rooms/').once('value').then(function(snapshot) {
   var chatRooms = snapshot.val().chatRooms;
   console.log(chatRooms);
 });
 }
 
 //create a hash of a chatRoomId, give a max number of users, a title, and the users id
-function createChatRoom(title, userId, maxNumUsers=10, chatRoomID){
-  firebase.database().ref('/Chat_rooms/' + chatRoomID).set({
-    title: title,
-    ownerID: userID,
+function createChatRoom(title, userId, maxNumUsers=10, chatRoomId, gpsCoordinate, password="password"){
+  firebase.database().ref('/chat_rooms/' +chatRoomId).set({
+    gps_coordinates:gpsCoordinate,
+    guest_ids:[0],
+    maximum_number_users: maxNumUsers,
+    messages:[userId,""],
+    owner_id:userId,
     maxNumUsers:maxNumUsers,
-    messages:["first message"]
+    password:password,
+    title:title
+  });
+}
+
+function sendMessage(chatRoomId,userId,message){
+  firebase.database().ref('/chat_rooms/'+chatRoomId+'/messages').set({
+    user_id: userId,
+    message: message
   });
 }
 
