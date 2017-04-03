@@ -29,9 +29,9 @@ function userLogin(userId, name, range = 10) {
 //Once logged in, get the chat rooms
 function getChatRooms(){
   return firebase.database().ref('/chat_rooms/').once('value').then(function(snapshot) {
-  var chatRooms = snapshot.val().chatRooms;
-  console.log(chatRooms);
-});
+    var chatRooms = snapshot.val().chatRooms;
+    console.log(chatRooms);
+  });
 }
 
 //create a hash of a chatRoomId, give a max number of users, a title, and the users id
@@ -60,57 +60,24 @@ function setRange(givenRange){
 }
 
 function geolocation() {
-  if (navigator.geolocation) {
-  console.log('Geolocation is supported!');
-  }
-  else {
-    console.log('Geolocation is not supported for this Browser/OS.');
-  }
-
   var startPos;
-  var nudge = document.getElementById("nudge");
-
-  var showNudgeBanner = function() {
-    nudge.style.display = "block";
-  };
-
-  var hideNudgeBanner = function() {
-    nudge.style.display = "none";
-  };
-
-
-  var nudgeTimeoutId = setTimeout(showNudgeBanner, 5000);
+  var geoOptions = {
+     timeout: 2 * 1000
+  }
 
   var geoSuccess = function(position) {
-    hideNudgeBanner();
-    // We have the location, don't display banner
-    clearTimeout(nudgeTimeoutId);
-
-    // Do magic with location
     startPos = position;
-    console.log(position);
-    document.getElementById('startLat').innerHTML = startPos.coords.latitude;
-    document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+    //document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+    //document.getElementById('startLon').innerHTML = startPos.coords.longitude;
   };
   var geoError = function(error) {
-    switch(error.code) {
-      case error.TIMEOUT:
-        // The user didn't accept the callout
-        showNudgeBanner();
-        break;
-    }
+    console.log('Error occurred. Error code: ' + error.code);
+    // error.code can be:
+    //   0: unknown error
+    //   1: permission denied
+    //   2: position unavailable (error response from location provider)
+    //   3: timed out
   };
 
-  navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
-
-  var uluru = {lat: -25.363, lng: 131.044};
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 4,
-    center: uluru
-  });
-  var marker = new google.maps.Marker({
-    position: uluru,
-    map: map
-  });
-  
+  navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
 }
