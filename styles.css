@@ -196,3 +196,8 @@
     color: #fff;
     cursor:pointer;
 }
+
+#settings-tab-font-style {
+    float: left;
+}
+
