@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hear: Lobby</title>
     <link rel="stylesheet" href="styles.css"/>
     <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
@@ -9,7 +18,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 </head>
-<body onload="geolocation()">
+<!-- <body onload="geolocation()">
         <div id="nudge"></div>
         <div id="startLat"></div>
         <div id="startLon"></div>
@@ -24,48 +33,232 @@
                         <div class="card">
                             <div class="container" align="center">
                                  <button type='button' onclick='add()' class='w3-button w3-xlarge w3-circle w3-grey w3-card-4' id='btn-create-room'>+</button>
-                            </div>
-                        </div>
+<body> -->
+<!-- http://bootsnipp.com/snippets/vrzGb -->
+<script src="https://use.fontawesome.com/45e03a14ce.js"></script>
+<div class="main_section">
+    <div class="container">
+        <div class="chat_container">
 
-                        <div class="card" id="room">
-                            <div class="container">
-                                <div class="num-box">4</div>
-                                <p padding="30px">UWM Engineering <br> Morgan: Can I get help on...</p>
+            <div class="col-sm-9 message_section">
+                <div class="row">
+
+                    <!-- START new_message_header-->
+
+                    <div class="new_message_head">
+                        <ul class="nav nav-tabs">
+                            <li role="presentation" class="active"><a data-toggle="tab" href="#map1">Map</a></li>
+                            <li role="presentation"><a data-toggle="tab" href="#room">Room <span class="badge">3</span></a></li>
+                            <li role="presentation"><a data-toggle="tab" href="#users">Users</a></li>
+                            <li role="presentation"><a data-toggle="tab" href="#settings">Settings</a></li>
+                        </ul>
+
+                        <!-- START tabs -->
+                        <div class="tab-content">
+                            <div id="map1" class="tab-pane fade">
+                                <h3>Map</h3>
+                                <p>Some content.</p>
+                            </div>
+                            <div id="room" class="tab-pane fade">
+
+                                <!--START chat_area-->
+                                <div class="chat_area">
+                                    <ul class="list-unstyled">
+                                        <li class="left clearfix">
+                     <span class="chat-img1 pull-left">
+                     <img src="http://rs253.pbsrc.com/albums/hh44/Gavener_Purl/poptart1red1.gif~c200" alt="User Avatar"
+                          class="img-circle">
+                     </span>
+                                            <div class="chat-body1 clearfix">
+                                                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots
+                                                    in a piece of classical Latin literature from 45 BC, making it over 2000 years
+                                                    old. Richard McClintock, a Latin professor at Hampden-Sydney College in
+                                                    Virginia.</p>
+                                                <div class="chat_time pull-right">09:40PM</div>
+                                            </div>
+                                        </li>
+                                        <li class="left clearfix">
+                     <span class="chat-img1 pull-left">
+                     <img src="http://rs253.pbsrc.com/albums/hh44/Gavener_Purl/poptart1red1.gif~c200" alt="User Avatar"
+                          class="img-circle">
+                     </span>
+                                            <div class="chat-body1 clearfix">
+                                                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots
+                                                    in a piece of classical Latin literature from 45 BC, making it over 2000 years
+                                                    old. Richard McClintock, a Latin professor at Hampden-Sydney College in
+                                                    Virginia.</p>
+                                                <div class="chat_time pull-right">09:40PM</div>
+                                            </div>
+                                        </li>
+                                        <li class="left clearfix">
+                     <span class="chat-img1 pull-left">
+                     <img src="http://rs253.pbsrc.com/albums/hh44/Gavener_Purl/poptart1red1.gif~c200" alt="User Avatar"
+                          class="img-circle">
+                     </span>
+                                            <div class="chat-body1 clearfix">
+                                                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots
+                                                    in a piece of classical Latin literature from 45 BC, making it over 2000 years
+                                                    old. Richard McClintock, a Latin professor at Hampden-Sydney College in
+                                                    Virginia.</p>
+                                                <div class="chat_time pull-right">09:40PM</div>
+                                            </div>
+                                        </li>
+                                        <li class="left clearfix admin_chat">
+                     <span class="chat-img1 pull-right">
+                     <img src="http://rs253.pbsrc.com/albums/hh44/Gavener_Purl/poptart1red1.gif~c200" alt="User Avatar"
+                          class="img-circle">
+                     </span>
+                                            <div class="chat-body1 clearfix">
+                                                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots
+                                                    in a piece of classical Latin literature from 45 BC, making it over 2000 years
+                                                    old. Richard McClintock, a Latin professor at Hampden-Sydney College in
+                                                    Virginia.</p>
+                                                <div class="chat_time pull-left">09:40PM</div>
+                                            </div>
+                                        </li>
+                                        <li class="left clearfix admin_chat">
+                     <span class="chat-img1 pull-right">
+                     <img src="http://rs253.pbsrc.com/albums/hh44/Gavener_Purl/poptart1red1.gif~c200" alt="User Avatar"
+                          class="img-circle">
+                     </span>
+                                            <div class="chat-body1 clearfix">
+                                                <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots
+                                                    in a piece of classical Latin literature from 45 BC, making it over 2000 years
+                                                    old. Richard McClintock, a Latin professor at Hampden-Sydney College in
+                                                    Virginia.</p>
+                                                <div class="chat_time pull-left">09:40PM</div>
+                                            </div>
+                                        </li>
+
+
+                                    </ul>
+                                </div>
+                                <!--END chat_area-->
+
+                                <!-- START message_write-->
+                                <div class="message_write">
+                                    <textarea class="form-control" placeholder="type a message"></textarea>
+                                    <div class="clearfix"></div>
+                                    <div class="chat_bottom">
+                                        <a href="#" class="pull-right btn btn-success">
+                                            Send</a>
+                                    </div>
+                                </div>
+                                <!-- END message_write-->
+
+                            </div>
+                            <div id="users" class="tab-pane fade">
+                                <h3>Users in Chat Room</h3>
+
+                                <!--START user list -->
+                    <!-- TODO need to pull in user list -->
+
+                                <div class="member_list" >
+                                    <ul class="list-unstyled" id="userList">
+                                        <li class="left clearfix">
+                     <span class="chat-img pull-left">
+                     <img src="http://rs253.pbsrc.com/albums/hh44/Gavener_Purl/poptart1red1.gif~c200" alt="User Avatar" class="img-circle">
+                     </span>
+                                            <div class="chat-body clearfix">
+                                                <div class="header_sec">
+                                                    <strong class="primary-font">Jack Sparrow</strong> <strong class="pull-right">
+                                                    09:45AM</strong>
+                                                </div>
+                                                <!--<div class="contact_sec">-->
+                                                    <!--<strong class="primary-font">(123) 123-456</strong> <span class="badge pull-right">3</span>-->
+                                                <!--</div>-->
+                                            </div>
+                                        </li>
+                                        <li class="left clearfix">
+                     <span class="chat-img pull-left">
+                     <img src="https://pbs.twimg.com/profile_images/639319799953289217/daVoLUtB.jpg" alt="User Avatar" class="img-circle">
+                     </span>
+                                            <div class="chat-body clearfix">
+                                                <div class="header_sec">
+                                                    <strong class="primary-font">Phillip J Fry</strong> <strong class="pull-right ">
+                                                    09:45AM</strong>
+                                                </div>
+                                                <!--<div class="contact_sec">-->
+                                                    <!--<strong class="primary-font">(123) 123-456</strong> <span class="badge pull-right">3</span>-->
+                                                <!--</div>-->
+                                            </div>
+                                        </li>
+                                        <li class="left clearfix">
+                     <span class="chat-img pull-left">
+                     <img src="http://rs253.pbsrc.com/albums/hh44/Gavener_Purl/poptart1red1.gif~c200" alt="User Avatar" class="img-circle">
+                     </span>
+                                            <div class="chat-body clearfix">
+                                                <div class="header_sec">
+                                                    <strong class="primary-font">Attilah the Hun</strong> <strong class="pull-right">
+                                                    09:45AM</strong>
+                                                </div>
+                                                <!--<div class="contact_sec">-->
+                                                    <!--<strong class="primary-font">(123) 123-456</strong> <span class="badge pull-right">3</span>-->
+                                                <!--</div>-->
+                                            </div>
+                                        </li>
+                                        <li class="left clearfix">
+                     <span class="chat-img pull-left">
+                     <img src="http://www.easydrawingtutorials.com/images/HomerSimpson/homer-simpson-step-last.jpg" alt="User Avatar" class="img-circle">
+                     </span>
+                                            <div class="chat-body clearfix">
+                                                <div class="header_sec">
+                                                    <strong class="primary-font">Homer J Simpson</strong> <strong class="pull-right">
+                                                    09:45AM</strong>
+                                                </div>
+                                                <!--<div class="contact_sec">-->
+                                                    <!--<strong class="primary-font">(123) 123-456</strong> <span class="badge pull-right">3</span>-->
+                                                <!--</div>-->
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+
+                                <!--END user list -->
+                            </div>
+
+                            <div id="settings" class="tab-pane fade">
+                                <h3>Settings</h3>
+                                <p>Some content in menu 2.</p>
                             </div>
                         </div>
 
                     </div>
-                // div for map/chat area
-                    <div id="map">
-                        <div class="card-nickname">
-                            <p>&ltEditable Nickname here&gt</p>
-                        </div>
-
-                    </div>
-
+                    <!-- END tabs -->
 
 
                 </div>
-
-            </div>
+            </div> <!--message_section-->
         </div>
-        <script>
-            function add() {
-                var listRooms = document.getElementById("chat-rooms");
-                var roomCard = document.createElement("div");
-                var chatText = prompt("Create new chat room: ");
-                roomCard.className="card";
+    </div>
+</div>
+<script>
+    function add() {
+        var listRooms = document.getElementById("chat-rooms");
+        var roomCard = document.createElement("div");
+        var chatText = prompt("Create new chat room: ");
+        roomCard.className = "card";
 
-                chatText = chatText.trim();
+        chatText = chatText.trim();
 //                item.text=chatText;
 //                item.appendChild("p");
 //                var text = document.createElement("p");
 //                text.appendChild(chatText);
 //                item.add(text);
 
-                listRooms.appendChild(roomCard);
-            }
-        </script>
+        listRooms.appendChild(roomCard);
+    }
+
+    function userList(){
+        var listUser = document.getElementById("userList");
+
+
+
+    }
+    onload=userList();
+
+</script>
 
 </body>
 </html>
