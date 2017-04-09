@@ -18,6 +18,12 @@
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <script>
+    function formSubmit() {
+      modal.style.display = "none";
+    }
+    </script>
+
 </head>
 <body>
 <script src="https://use.fontawesome.com/45e03a14ce.js"></script>
@@ -36,14 +42,17 @@
                       <div class="modal-content">
                         <div class="modal-header">
                           <span class="close">&times;</span>
-                          <h2>Modal Header</h2>
+                          <h2>Create Chat Room</h2>
                         </div>
                         <div class="modal-body">
-                          <p>Some text in the Modal Body</p>
-                          <p>Some other text...</p>
+                          <form name="myForm" action="/action_page.php" method="get">
+                          Title: <input type="text" name="title"><br>
+                          Password: <input type="text" name="password"><br><br>
+                          <input type="button" onclick="formSubmit()" value="Create">
+                          </form>
                         </div>
                         <div class="modal-footer">
-                          <h3>Modal Footer</h3>
+                          <h3>Hear</h3>
                         </div>
                       </div>
 
