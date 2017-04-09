@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -12,29 +13,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hear: Lobby</title>
-    <link rel="stylesheet" href="styles.css"/>
     <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
     <script src="backend.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <style>
+    #map1 {
+      height: 80%;
+    }
+    /* Optional: Makes the sample page fill the window. */
+    html, body, .main_section, .container, .chat_container, .message_section, .row, .new_message_head, .tab-content{
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    </style>
 </head>
-<!-- <body onload="geolocation()">
-        <div id="nudge"></div>
-        <div id="startLat"></div>
-        <div id="startLon"></div>
-        <div id="map"></div>
-        <div class="row">
-            <div class="span6 offset3">
-                <div id="lobby-container" class="clearfix">
-
-              // list of chat rooms
-                    <div id="chat-rooms" >
-
-                        <div class="card">
-                            <div class="container" align="center">
-                                 <button type='button' onclick='add()' class='w3-button w3-xlarge w3-circle w3-grey w3-card-4' id='btn-create-room'>+</button>
-<body> -->
-<!-- http://bootsnipp.com/snippets/vrzGb -->
+<body>
 <script src="https://use.fontawesome.com/45e03a14ce.js"></script>
 <div class="main_section">
     <div class="container">
@@ -47,8 +43,8 @@
 
                     <div class="new_message_head">
                         <ul class="nav nav-tabs">
-                            <li role="presentation" class="active"><a data-toggle="tab" href="#map1">Map</a></li>
-                            <li role="presentation"><a data-toggle="tab" href="#room">Room <span class="badge">3</span></a></li>
+                            <li role="presentation"><a data-toggle="tab" href="#map1">Map</a></li>
+                            <li role="presentation" class="active"><a data-toggle="tab" href="#room">Room <span class="badge">3</span></a></li>
                             <li role="presentation"><a data-toggle="tab" href="#users">Users</a></li>
                             <li role="presentation"><a data-toggle="tab" href="#settings">Settings</a></li>
                         </ul>
@@ -56,8 +52,69 @@
                         <!-- START tabs -->
                         <div class="tab-content">
                             <div id="map1" class="tab-pane fade">
-                                <h3>Map</h3>
-                                <p>Some content.</p>
+                                <script>
+                                  var map;
+                                  var markers = [];
+
+                                  function initMap() {
+                                    map = new google.maps.Map(document.getElementById('map1'), {
+                                      center: {lat: 43.0292059, lng: -87.9093327},
+                                      zoom: 18
+                                    });
+                                    var infoWindow = new google.maps.InfoWindow({map: map});
+
+                                    // Try HTML5 geolocation.
+                                    if (navigator.geolocation) {
+                                      navigator.geolocation.getCurrentPosition(function(position) {
+                                        var pos = {
+                                          lat: position.coords.latitude,
+                                          lng: position.coords.longitude
+                                        };
+
+                                        infoWindow.setPosition(pos);
+                                        infoWindow.setContent('Location found.');
+                                        map.setCenter(pos);
+                                      }, function() {
+                                        handleLocationError(true, infoWindow, map.getCenter());
+                                      });
+                                    } else {
+                                      // Browser doesn't support Geolocation
+                                      handleLocationError(false, infoWindow, map.getCenter());
+                                    }
+
+                                    map.addListener('click', function(event) {
+                                      var loc = {lat: event.latLng.lat(), lng: event.latLng.lng()};
+                                      addMarker(loc);
+                                    });
+
+                                    setMapOnAll();
+                                  }
+
+                                  // Adds a marker to the map and push to the array.
+                                  function addMarker(location) {
+                                    var marker = new google.maps.Marker({
+                                      position: location,
+                                      map: map
+                                    });
+                                    markers.push(location);
+                                  }
+
+                                  // Sets the map on all markers in the array.
+                                  function setMapOnAll(map) {
+                                    for (var i = 0; i < markers.length; i++) {
+                                      markers[i].setMap(map);
+                                    }
+                                  }
+
+                                  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                                    infoWindow.setPosition(pos);
+                                    infoWindow.setContent(browserHasGeolocation ?
+                                                          'Error: The Geolocation service failed.' :
+                                                          'Error: Your browser doesn\'t support geolocation.');
+                                  }
+
+                                </script>
+
                             </div>
                             <div id="room" class="tab-pane fade">
 
@@ -256,9 +313,11 @@
 
 
     }
-    onload=userList();
+    //onload=userList();
 
 </script>
-
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCs36OTXropmoWHBfSmii4b95UaYrvIad4&callback=initMap">
+</script>
 </body>
 </html>
