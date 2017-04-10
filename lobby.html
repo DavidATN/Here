@@ -28,13 +28,12 @@
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
-      });
-        var chatRoomId = b64_sha256(getElementById("ChatRoomTitle"))
-        var title = getElementById("ChatRoomTitle")
+        var chatRoomId = hex_sha256((document.getElementById("ChatRoomTitle"))
+        var title = document.getElementById("ChatRoomTitle")
         var userId = "blublop"
-        createChatRoom(title, userId, maxNumUsers=10, chatRoomId, pos[0], pos[1], password="password")
+        createChatRoom(title, userId, maxNumUsers=10, chatRoomId, curpos[0], curpos[1], password="password")
         modal.style.display = "none";
-    }
+    })};
     </script>
 
 </head>
