@@ -32,6 +32,7 @@ function getChatRooms(addMarkerFunc){
     snapshot.forEach(function(childSnapshot) {
     var childKey = childSnapshot.key;
     var childData = childSnapshot.val();
+    console.log(childData);
     var lati = childData.lat;
     var long = childData.lng;
     var loc = {lat: lati, lng: long};
@@ -43,7 +44,7 @@ function getChatRooms(addMarkerFunc){
 
 //create a hash of a chatRoomId, give a max number of users, a title, and the users id
 function createChatRoom(title, userId, maxNumUsers=10, chatRoomId, lat, lng, password="password"){
-  firebase.database().ref('/chat_rooms/' +chatRoomId).set({
+  firebase.database().ref('chat_rooms/' +chatRoomId).set({
     lat:lat,
     lng:lng,
     guest_ids:[0],
