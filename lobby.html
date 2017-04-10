@@ -15,12 +15,25 @@
     <title>Hear: Lobby</title>
     <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
     <script src="backend.js"></script>
+    <Script src="sha256.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" type="text/css" href="styles.css"/>
+
     <script>
-    function formSubmit() {
-      modal.style.display = "none";
+    function createChatRoomBut(){
+      var curpos
+      navigator.geolocation.getCurrentPosition(function(position) {
+        curpos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+      });
+        var chatRoomId = b64_sha256(getElementById("ChatRoomTitle"))
+        var title = getElementById("ChatRoomTitle")
+        var userId = "blublop"
+        createChatRoom(title, userId, maxNumUsers=10, chatRoomId, pos[0], pos[1], password="password")
+        modal.style.display = "none";
     }
     </script>
 
@@ -45,11 +58,15 @@
                           <h2>Create Chat Room</h2>
                         </div>
                         <div class="modal-body">
-                          <form name="myForm" action="/action_page.php" method="get">
-                          Title: <input type="text" name="title"><br>
-                          Password: <input type="text" name="password"><br><br>
-                          <input type="button" onclick="formSubmit()" value="Create">
-                          </form>
+                                                              <div class="form-group">
+                                                                  <label for="ChatRoomTitle">Title:</label>
+                                                                  <input type="Title" class="form-control" id="ChatRoomTitle" placeholder="Enter Title">
+                                                              </div>
+                                                              <div class="form-group">
+                                                                  <label for="ChatRoomPassword">Password: </label>
+                                                                  <input type="password" class="form-control" id="ChatRoomPassword" placeholder="default is 'password'">
+                                                              </div>
+                                                              <button type="button" onclick="createChatRoomBut()">Create</button>
                         </div>
                         <div class="modal-footer">
                           <h3>Hear</h3>
