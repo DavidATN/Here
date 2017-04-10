@@ -179,6 +179,16 @@
                                       addMarker(loc);
                                     });
                                     setMapOnAll();
+                                    getChatRooms(addMarkerFromFireabase);
+                                  }
+
+                                  // Adds a marker to the map and push to the array.
+                                  function addMarkerFromFireabase(location) {
+                                    var marker = new google.maps.Marker({
+                                      position: location,
+                                      map: map
+                                    });
+                                    markers.push(location);
                                   }
 
                                   // Adds a marker to the map and push to the array.

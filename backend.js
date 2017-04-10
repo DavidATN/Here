@@ -27,10 +27,17 @@ function userLogin(userId, name, range = 10) {
 }
 
 //Once logged in, get the chat rooms
-function getChatRooms(){
+function getChatRooms(addMarkerFunc){
   return firebase.database().ref('/chat_rooms/').once('value').then(function(snapshot) {
-    var chatRooms = snapshot.val().chatRooms;
-    console.log(chatRooms);
+    snapshot.forEach(function(childSnapshot) {
+    var childKey = childSnapshot.key;
+    var childData = childSnapshot.val();
+    var lati = childData.lat;
+    var long = childData.lng;
+    var loc = {lat: lati, lng: long};
+    addMarkerFunc(loc);
+    // ...
+  });
   });
 }
 
