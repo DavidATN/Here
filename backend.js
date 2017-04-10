@@ -42,9 +42,10 @@ function getChatRooms(addMarkerFunc){
 }
 
 //create a hash of a chatRoomId, give a max number of users, a title, and the users id
-function createChatRoom(title, userId, maxNumUsers=10, chatRoomId, gpsCoordinate, password="password"){
+function createChatRoom(title, userId, maxNumUsers=10, chatRoomId, lat, lng, password="password"){
   firebase.database().ref('/chat_rooms/' +chatRoomId).set({
-    gps_coordinates:gpsCoordinate,
+    lat:lat,
+    lng:lng,
     guest_ids:[0],
     maximum_number_users: maxNumUsers,
     messages:[userId,""],
