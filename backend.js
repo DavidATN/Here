@@ -14,6 +14,7 @@ var userId = 0;
 var range = 10;
 var chatRooms = [0];
 var currentChat = 'NWQ';
+var name = "asdf";
 
 //Need Nickname to navigate to lobby screen
 function userLogin(userId, name, range = 10) {
@@ -24,6 +25,7 @@ function userLogin(userId, name, range = 10) {
   });
   userId=userId;
   userRange=range;
+  name=name;
 }
 
 //Once logged in, get the chat rooms
@@ -52,13 +54,13 @@ function createChatRoom(title, userId, maxNumUsers=10, chatRoomId, lat, lng, pas
   });
 }
 
-function sendMessage(chatRoomName,userName,message){
-  firebase.database().ref('/chat_rooms/'+chatRoomId+'/messages').set({
-    user_id: userName,
+function sendMessage(message){
+  firebase.database().ref('/chat_rooms/'+currentChat+'/messages').set({
+    user_id: name,
     message: message
   });
   var e = $("#messages");
-  $("<p>" +userName+ "</p>").appendTo(e[0]);
+  $("<p>" +name+ "</p>").appendTo(e[0]);
   var m = "<div class='chat-body1 clearfix'><p>" + message + "</p><div class='chat_time pull-right'>09:40PM</div></div>";
   $(m).appendTo(e[0]);
 }
