@@ -27,17 +27,12 @@ function userLogin(userId, name, range = 10) {
 }
 
 //Once logged in, get the chat rooms
-function getChatRooms(addMarkerFunc){
+function getChatRooms(func){
   return firebase.database().ref('/chat_rooms/').once('value').then(function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
     var childKey = childSnapshot.key;
     var childData = childSnapshot.val();
-    console.log(childData);
-    var lati = childData.lat;
-    var long = childData.lng;
-    var loc = {lat: lati, lng: long};
-    addMarkerFunc(loc);
-    // ...
+    func(childData);
   });
   });
 }
@@ -66,4 +61,20 @@ function sendMessage(chatRoomId,userId,message){
 
 function setRange(givenRange){
   userRange=givenRange;
+}
+
+function add() {
+    var listRooms = document.getElementById("chat-rooms");
+    var roomCard = document.createElement("div");
+    var chatText = prompt("Create new chat room: ");
+    roomCard.className = "card";
+
+    chatText = chatText.trim();
+//                item.text=chatText;
+//                item.appendChild("p");
+//                var text = document.createElement("p");
+//                text.appendChild(chatText);
+//                item.add(text);
+
+    listRooms.appendChild(roomCard);
 }
