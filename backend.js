@@ -52,10 +52,13 @@ function createChatRoom(title, userId, maxNumUsers=10, chatRoomId, lat, lng, pas
   });
 }
 
-function sendMessage(chatRoomId,userId,message){
+function sendMessage(chatRoomName,userName,message){
   firebase.database().ref('/chat_rooms/'+chatRoomId+'/messages').set({
-    user_id: userId,
+    user_id: userName,
     message: message
+    $("<p>" +userName+ "</p>").appendTo(e[0]);
+    var m = "<div class='chat-body1 clearfix'><p>" + message + "</p><div class='chat_time pull-right'>09:40PM</div></div>";
+    $(m).appendTo(e[0]);
   });
 }
 
