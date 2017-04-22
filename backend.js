@@ -13,7 +13,7 @@ var database = firebase.database();
 var userId = 0;
 var range = 10;
 var chatRooms = [0];
-var currentChat = 0;
+var currentChat = 'NWQ';
 
 //Need Nickname to navigate to lobby screen
 function userLogin(userId, name, range = 10) {
@@ -32,7 +32,7 @@ function getChatRooms(func){
     snapshot.forEach(function(childSnapshot) {
     var childKey = childSnapshot.key;
     var childData = childSnapshot.val();
-    func(childData);
+    func(childKey, childData);
   });
   });
 }
