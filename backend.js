@@ -62,6 +62,12 @@ function sendMessage(){
     sender: name,
     message: message
   });
+
+  var ref = firebase.database().ref('/chat_rooms'+currentChat+'/messages/');
+  ref.limitToLast(2).on("value", function(snapshot) {
+    console.log(snapshot);
+  })
+  console.log('finished');
 }
 
 function setRange(givenRange){
