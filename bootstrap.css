@@ -5928,6 +5928,7 @@ button.close {
   opacity: 0;
 }
 .modal-backdrop.in {
+  z-index: auto;
   filter: alpha(opacity=50);
   opacity: .5;
 }
