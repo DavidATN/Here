@@ -13,8 +13,9 @@ var database = firebase.database();
 var userId = 0;
 var range = 10;
 var chatRooms = [0];
-var currentChat = 'Physics';
-var name = "asdf";
+var currentChat = 'UWM Union';
+var name = "Shahrukh";
+var messagesArray = new Array();
 
 //Need Nickname to navigate to lobby screen
 function userLogin(userId, name, range = 10) {
@@ -54,15 +55,13 @@ function createChatRoom(title, userId, maxNumUsers=10, chatRoomId, lat, lng, pas
   });
 }
 
-function sendMessage(message){
-  firebase.database().ref('/chat_rooms/'+currentChat+'/messages').set({
-    user_id: name,
+function sendMessage(){
+  var newPostRef = firebase.database().ref('/chat_rooms'+currentChat+'/messages').push();
+  var message = $("#message-text-area").val()
+  firebase.database().ref('chat_rooms/' + currentChat + '/messages/' + newPostRef.key).set({
+    sender: name,
     message: message
   });
-  var e = $("#messages");
-  $("<p>" +name+ "</p>").appendTo(e[0]);
-  var m = "<div class='chat-body1 clearfix'><p>" + message + "</p><div class='chat_time pull-right'>09:40PM</div></div>";
-  $(m).appendTo(e[0]);
 }
 
 function setRange(givenRange){
