@@ -6,6 +6,7 @@ function initMap() {
     center: {lat: 43.0292059, lng: -87.9093327},
     zoom: 18
   });
+    google.maps.event.trigger(map, 'resize');
   var infoWindow = new google.maps.InfoWindow({map: map});
 
   // Try HTML5 geolocation.
@@ -31,7 +32,11 @@ function initMap() {
     var loc = {lat: event.latLng.lat(), lng: event.latLng.lng()};
     addMarker(loc);
   });
+    google.maps.event.addListenerOnce(map, 'idle', function() {
+        google.maps.event.trigger(map, 'resize');
+    });
   setMapOnAll();
+
 }
 
 // Adds a marker to the map and push to the array.
