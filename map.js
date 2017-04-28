@@ -71,7 +71,7 @@ var modal = document.getElementById('myModal');
 var btn = document.getElementById("myBtn");
 
 // Get the <span> element that closes the modal
-var spansd = document.getElementsByClassName("close")[0];
+//var spansd = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal
 
@@ -108,5 +108,7 @@ function createChatRoomBut() {
   var userId = "blublop";
 
   createChatRoom(title, userId, maxNumUsers=10, chatRoomId, curpos.lat, curpos.lng, password="password");
-  modal.style.display = "none";
+    $('#myModal').modal('hide');
+  //modal.style.display = "none";
+
 }
