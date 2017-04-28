@@ -35,7 +35,7 @@ function initMap() {
 }
 
 // Adds a marker to the map and push to the array.
-function addMarkerFromFireabase(childData) {
+function addMarkerFromFireabase(childKey, childData) {
   var lati = childData.lat;
   var long = childData.lng;
   var loc = {lat: lati, lng: long};

@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <!-- Latest compiled and minified CSS -->
-    <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
     <link rel="stylesheet" type="text/css" href="bootstrap.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -19,10 +21,6 @@
     <script src="messages.js"></script>
     <script src="users.js"></script>
     <Script src="sha256.js"></script>
-    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <link rel="stylesheet" type="text/css" href="styles.css"/>
-
 </head>
 <body>
 <script src="https://use.fontawesome.com/45e03a14ce.js"></script>
@@ -44,21 +42,20 @@
                           <h2>Create Chat Room</h2>
                         </div>
                         <div class="modal-body">
-                                                              <div class="form-group">
-                                                                  <label for="ChatRoomTitle">Title:</label>
-                                                                  <input type="Title" class="form-control" id="ChatRoomTitle" placeholder="Enter Title">
-                                                              </div>
-                                                              <div class="form-group">
-                                                                  <label for="ChatRoomPassword">Password: </label>
-                                                                  <input type="password" class="form-control" id="ChatRoomPassword" placeholder="default is 'password'">
-                                                              </div>
-                                                              <button type="button" onclick="createChatRoomBut(this);">Create</button>
+                          <div class="form-group">
+                            <label for="ChatRoomTitle">Title:</label>
+                            <input type="Title" class="form-control" id="ChatRoomTitle" placeholder="Enter Title">
+                          </div>
+                          <div class="form-group">
+                            <label for="ChatRoomPassword">Password: </label>
+                            <input type="password" class="form-control" id="ChatRoomPassword" placeholder="default is 'password'">
+                          </div>
+                          <button type="button" onclick="createChatRoomBut(this);">Create</button>
                         </div>
                         <div class="modal-footer">
                           <h3>Hear</h3>
                         </div>
                       </div>
-
                     </div>
                     <div class="new_message_head">
                         <ul class="nav nav-tabs">
@@ -67,77 +64,31 @@
                             <li><a data-toggle="tab" href="#users">Users</a></li>
                             <li><a data-toggle="tab" href="#settings">Settings</a></li>
                         </ul>
-
                         <!-- START tabs -->
                         <div class="tab-content">
-                            <div id="map1" class="tab-pane fade">
-                                <script>
-
-
-                                </script>
-                            </div>
+                            <div id="map1" class="tab-pane fade"></div>
                             <div id="room" class="tab-pane fade in active">
-
-                                <!--START chat_area-->
-                                <div class="chat_area">
-                                    <ul id="messages" class="list-unstyled">
-
-                                        <li class="left clearfix">
-                     <span class="chat-img1 pull-left">
-                     <img src="http://rs253.pbsrc.com/albums/hh44/Gavener_Purl/poptart1red1.gif~c200" alt="User Avatar"
-                          class="img-circle">
-                     </span>
-                                            <div class="chat-body1 clearfix">
-                                                <p>Hello world!</p>
-                                                <div class="chat_time pull-right">09:40PM</div>
-                                            </div>
-                                        </li>
-                                        <li class="left clearfix admin_chat">
-                     <span class="chat-img1 pull-right">
-                     <img src="http://rs253.pbsrc.com/albums/hh44/Gavener_Purl/poptart1red1.gif~c200" alt="User Avatar"
-                          class="img-circle">
-                     </span>
-                                            <div class="chat-body1 clearfix">
-                                                <p>How's it going?</p>
-                                                <div class="chat_time pull-left">09:41PM</div>
-                                            </div>
-                                        </li>
-
-                                    </ul>
-                                </div>
+                            <!--START chat_area-->
+                              <div class="chat_area">
+                                <ul id="messages" class="list-unstyled"></ul>
+                              </div>
                                 <!--END chat_area-->
-
                                 <!-- START message_write-->
                                 <div class="message_write">
                                     <textarea class="form-control" placeholder="type a message"></textarea>
                                     <div class="clearfix"></div>
                                     <div class="chat_bottom">
-                                        <a href="#" class="pull-right btn btn-success">
-                                            Send</a>
+                                        <a href="#" class="pull-right btn btn-success" onclick="sendMessage();">Send</a>
                                     </div>
                                 </div>
                                 <!-- END message_write-->
-
                             </div>
                             <div id="users" class="tab-pane fade">
-                                <h3>Users in Chat Room</h3>
-
-                                <!--START user list -->
-                    <!-- TODO need to pull in user list -->
-
+                              <h3>Users in Chat Room</h3>
+                              <!--START user list -->
+                              <!-- TODO need to pull in user list -->
                                 <div class="member_list" >
                                     <ul class="list-unstyled" id="userList">
-                                        <li class="left clearfix">
-                                          <span class="chat-img pull-left">
-                                            <img src="http://rs253.pbsrc.com/albums/hh44/Gavener_Purl/poptart1red1.gif~c200" alt="User Avatar" class="img-circle">
-                                          </span>
-                                          <div class="chat-body clearfix">
-                                            <div class="header_sec">
-                                              <strong class="primary-font">Jack Sparrow</strong>
-                                            <strong class="pull-right"></strong>
-                                          </div>
-                                        </div>
-                                        </li>
                                     </ul>
                                 </div>
 

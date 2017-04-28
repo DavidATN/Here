@@ -13,7 +13,7 @@ var database = firebase.database();
 var userId = 0;
 var range = 10;
 var chatRooms = [0];
-var currentChat = 'NWQ';
+var currentChat = 'Physics';
 var name = "asdf";
 
 //Need Nickname to navigate to lobby screen
