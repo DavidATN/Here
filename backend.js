@@ -64,8 +64,8 @@ function sendMessage(){
   });
 
   var ref = firebase.database().ref('/chat_rooms'+currentChat+'/messages/');
-  ref.limitToLast(2).on("value", function(snapshot) {
-    console.log(snapshot);
+  ref.limitToLast(2).on("child_added", function(childSnapshot, prevChildKey) {
+    console.log(childSnapshot);
   })
   console.log('finished');
 }
