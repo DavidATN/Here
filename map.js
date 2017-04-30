@@ -57,6 +57,11 @@ function addMarkerFromFireabase(childKey, childData) {
     map: map
   });
 
+  marker.addListener('click', function() {
+          console.log('Test');
+          switchRoom();
+    });
+
   markers.push(location);
 }
 
@@ -67,10 +72,10 @@ function addMarker(location) {
     map: map
   });
 
-  // marker.addListener('click', function() {
-  //         console.log('Test');
-  //         switchRoom();
-  //   });
+   marker.addListener('click', function() {
+           console.log('Test');
+           switchRoom();
+     });
 
     document.getElementById("ChatRoomTitle").value=""
     document.getElementById("ChatRoomPassword").value=""
