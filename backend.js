@@ -25,7 +25,6 @@ function userLogin(userId, name, range = 10) {
     chatRooms: 0,
     range : 10
   });
-  console.log(userId);
   userId=userId;
   userRange=range;
   name=name;
