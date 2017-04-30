@@ -97,3 +97,10 @@ function queryFirebase() {
     }
   })
 }
+
+function switchRoom(switchTo){
+
+  currentChat = switchTo;
+  console.log("switching to chat room:" + switchTo);
+  messagesArray = new Array;
+}

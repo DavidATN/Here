@@ -38,6 +38,13 @@ function initMap() {
         google.maps.event.trigger(map, 'resize');
     });
 
+    for (i = 0; i < markers.length; i++){
+        markers[i].addListener('click', function() {
+            console.log('Test');
+            switchRoom();
+        });
+    }
+
 }
 
 // Adds a marker to the map and push to the array.
@@ -60,9 +67,13 @@ function addMarker(location) {
     map: map
   });
 
-  marker.addListener('click', function() {
-          console.log('Test');
-    });
+  // marker.addListener('click', function() {
+  //         console.log('Test');
+  //         switchRoom();
+  //   });
+
+    document.getElementById("ChatRoomTitle").value=""
+    document.getElementById("ChatRoomPassword").value=""
 
     $('#myModal').modal('show');
   //modal.style.display = "block";
