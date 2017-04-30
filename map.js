@@ -64,6 +64,9 @@ function addMarker(location) {
           console.log('Test');
     });
 
+    document.getElementById("ChatRoomTitle").value=""
+    document.getElementById("ChatRoomPassword").value=""
+
     $('#myModal').modal('show');
   //modal.style.display = "block";
 
