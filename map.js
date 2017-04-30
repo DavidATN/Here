@@ -72,6 +72,9 @@ function addMarker(location) {
   //         switchRoom();
   //   });
 
+    document.getElementById("ChatRoomTitle").value=""
+    document.getElementById("ChatRoomPassword").value=""
+
     $('#myModal').modal('show');
   //modal.style.display = "block";
 

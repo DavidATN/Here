@@ -4,6 +4,7 @@
 /* Optional: Makes the sample page fill the window. */
 html, body, .main_section, .container, .chat_container, .message_section, .row, .new_message_head, .tab-content{
     height: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
 }
