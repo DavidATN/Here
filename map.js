@@ -59,13 +59,18 @@ function addMarker(location) {
     position: location,
     map: map
   });
+
+  marker.addListener('click', function() {
+          console.log('Test');
+    });
+
     $('#myModal').modal('show');
   //modal.style.display = "block";
 
   markers.push(location);
 }
 
-    
+
 
 getChatRooms(addMarkerFromFireabase);
 
@@ -115,6 +120,4 @@ function createChatRoomBut() {
 
   createChatRoom(title, userId, maxNumUsers=10, chatRoomId, curpos.lat, curpos.lng, password="password");
     $('#myModal').modal('hide');
-  //modal.style.display = "none";
-
 }
