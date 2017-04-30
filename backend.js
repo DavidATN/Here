@@ -16,6 +16,7 @@ var chatRooms = [0];
 var currentChat = 'UWM Union';
 var name = "Shahrukh";
 var messagesArray = new Array();
+var timer = setInterval(queryFirebase, 200);
 
 //Need Nickname to navigate to lobby screen
 function userLogin(userId, name, range = 10) {
@@ -24,6 +25,7 @@ function userLogin(userId, name, range = 10) {
     chatRooms: 0,
     range : 10
   });
+  console.log(userId);
   userId=userId;
   userRange=range;
   name=name;
@@ -63,11 +65,7 @@ function sendMessage(){
     message: message
   });
 
-  var ref = firebase.database().ref('/chat_rooms'+currentChat+'/messages/');
-  ref.limitToLast(2).on("child_added", function(childSnapshot, prevChildKey) {
-    console.log(childSnapshot);
-  })
-  console.log('finished');
+  $("#message-text-area").val('');
 }
 
 function setRange(givenRange){
@@ -88,4 +86,15 @@ function add() {
 //                item.add(text);
 
     listRooms.appendChild(roomCard);
+}
+
+
+
+function queryFirebase() {
+  var ref = firebase.database().ref('/chat_rooms/'+currentChat+'/messages');
+  ref.limitToLast(25).on("child_added", function(childSnapshot, prevChildKey) {
+    if (!messagesArray.includes(childSnapshot.key)) {
+      publishMessage(childSnapshot.key, childSnapshot.val());
+    }
+  })
 }

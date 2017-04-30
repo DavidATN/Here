@@ -11,4 +11,15 @@ function publishMessages(childKey, childData) {
   }
 }
 
+function publishMessage(childKey, childData) {
+  var e = $("#messages");
+  messagesArray.push(childKey);
+  $("<p>" + childData.sender + "</p>").appendTo(e[0]);
+  var m = "<div class='chat-body1 clearfix'><p>" + childData.message + "</p><div class='chat_time pull-right'>09:40PM</div></div>";
+  $(m).appendTo(e[0]);
+
+  var objDiv = document.getElementById("chat_area");
+  objDiv.scrollTop = objDiv.scrollHeight;
+}
+
 getChatRooms(publishMessages);
