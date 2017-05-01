@@ -91,6 +91,23 @@ function queryMarkers() {
       addMarkerFromFireabase(childSnapshot.key, childSnapshot.val());
     }
   })
+
+function getChatRoomPassword(chatRoom){
+  var ref = firebase.database().ref('/chat_rooms/'+chatRoom+'/password');
+  var password = "password";
+  ref.once("value", function(data) {
+    password=data;
+  });
+  return password;
+}
+
+function passwordCheck(switchTo){
+  if (getChatRoomPassword(switchTo) == "password"){
+    switchRoom(switchTo);
+  }
+  //else{
+    //todo
+//  }
 }
 
 function switchRoom(switchTo){
@@ -99,8 +116,6 @@ function switchRoom(switchTo){
   currentChat = switchTo;
   messagesArray = new Array;
   $("#messages").empty();
-  $("#userList").empty();
-  getChatRooms(publishUsers);
   timer = setInterval(queryFirebase, 200);
   markerTimer = setInterval(queryMarkers, 2000);
 }
