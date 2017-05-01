@@ -58,8 +58,8 @@ function addMarkerFromFireabase(childKey, childData) {
   });
 
   marker.addListener('click', function() {
-          console.log('Test');
-          switchRoom();
+          console.log('clicked on existing chat');
+          switchRoom(childKey);
     });
 
   markers.push(location);
@@ -72,18 +72,17 @@ function addMarker(location) {
     map: map
   });
 
-   marker.addListener('click', function() {
-           console.log('Test');
-           switchRoom();
-     });
-
-    document.getElementById("ChatRoomTitle").value=""
+    title = document.getElementById("ChatRoomTitle").value=""
     document.getElementById("ChatRoomPassword").value=""
 
     $('#myModal').modal('show');
   //modal.style.display = "block";
 
   markers.push(location);
+    // marker.addListener('click', function() {
+    //     console.log('switching to new chat room');
+    //     switchRoom();
+    // });
 }
 
 
