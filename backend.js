@@ -8,6 +8,16 @@
     storageBucket: "my-awe-3b724.appspot.com",
     messagingSenderId: "655595083565"
   };
+  // Initialize Firebase
+  // var config = {
+  //     apiKey: "AIzaSyBZ3olPVdoHXWqpdn8hUx0jeM4d0tjzANI",
+  //     authDomain: "testproj-8eda7.firebaseapp.com",
+  //     databaseURL: "https://testproj-8eda7.firebaseio.com",
+  //     projectId: "testproj-8eda7",
+  //     storageBucket: "testproj-8eda7.appspot.com",
+  //     messagingSenderId: "411022540082"
+  // };
+
   firebase.initializeApp(config);
 var firebase;
 firebase.initializeApp(config);
@@ -158,4 +168,6 @@ function switchRoom(switchTo){
   $("#userList").empty();
   getChatRooms(publishUsers);
   timer = setInterval(queryFirebase, 200);
+
+  $('.nav-tabs li:eq(1) a').tab('show');
 }
