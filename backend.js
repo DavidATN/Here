@@ -85,19 +85,11 @@ function queryFirebase() {
 }
 
 function switchRoom(switchTo){
-  if currentChat = 'UWM Union'{
-    var newPostRef = firebase.database().ref('/chat_rooms'+currentChat+'/guest_ids/');
-    ref.child(userId).remove();
-  }
-
+  clearInterval(timer);
   currentChat = switchTo;
-  console.log("switching to chat room:" + switchTo);
   messagesArray = new Array;
 
-  var newPostRef = firebase.database().ref('/chat_rooms'+currentChat+'/guest_ids').push();
-  var message = userId
-  firebase.database().ref('chat_rooms/' + currentChat + '/guest_ids/' + newPostRef.key).set({
-    userId
-  });
+  $("#messages").empty();
 
+  timer = setInterval(queryFirebase, 200);
 }
