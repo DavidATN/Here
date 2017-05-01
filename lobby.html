@@ -21,6 +21,20 @@
     <script src="messages.js"></script>
     <script src="users.js"></script>
     <Script src="sha256.js"></script>
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=8gaa0kd8x7zal7pjfrtokaoj445lhf3eawzyclo11rhw9kt9"></script>
+    <script>
+        tinymce.init({
+            forced_root_block : false,
+            force_br_newlines : true,
+            force_p_newlines : false,
+            force_div_newlines: false,
+            style_formats: [
+                {title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
+                {title: 'Blue text', inline: 'span', styles: {color: '#0000ff'}}
+                ],
+            selector:'#message-text-area'
+        });
+    </script>
 </head>
 <body>
 <script src="https://use.fontawesome.com/45e03a14ce.js"></script>

@@ -48,16 +48,19 @@ function createChatRoom(title, name, maxNumUsers=10, chatRoomId, lat, lng, passw
   });
 }
 
-function sendMessage(){
-  var newPostRef = firebase.database().ref('/chat_rooms'+currentChat+'/messages').push();
-  var message = $("#message-text-area").val()
-  firebase.database().ref('chat_rooms/' + currentChat + '/messages/' + newPostRef.key).set({
-    sender: name,
-    message: message
-  });
+  function sendMessage(){
+      var newPostRef = firebase.database().ref('/chat_rooms'+currentChat+'/messages').push();
+      tinyMCE.triggerSave();
+      var message = $("#message-text-area").val();
+      tinyMCE.activeEditor.setContent('');
+      firebase.database().ref('chat_rooms/' + currentChat + '/messages/' + newPostRef.key).set({
+          sender: name,
+          message: message
+      });
 
-  $("#message-text-area").val('');
-}
+      $("#message-text-area").val('');
+  }
+
 
 function setRange(givenRange){
   userRange=givenRange;
