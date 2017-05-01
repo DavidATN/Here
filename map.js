@@ -131,7 +131,7 @@ function createChatRoomBut() {
   var curpos = markers[markers.length - 1];
   var chatRoomId = document.getElementById("ChatRoomTitle").value;
   var title = document.getElementById("ChatRoomTitle");
-  var userId = "blublop";
+  var userId = name;
 
   createChatRoom(title, userId, maxNumUsers=10, chatRoomId, curpos.lat, curpos.lng, password="password");
     $('#myModal').modal('hide');

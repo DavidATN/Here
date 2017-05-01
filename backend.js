@@ -12,10 +12,10 @@ firebase.initializeApp(config);
 var database = firebase.database();
 var range = 10;
 var chatRooms = [0];
-var currentChat = 'UWM Union';
+var currentChat = 'NB';
 var name;
 var messagesArray = new Array();
-//var timer = setInterval(queryFirebase, 200);
+var timer = setInterval(queryFirebase, 200);
 
 //Once logged in, get the chat rooms
 function getChatRooms(func){
@@ -33,10 +33,10 @@ function createChatRoom(title, name, maxNumUsers=10, chatRoomId, lat, lng, passw
   firebase.database().ref('chat_rooms/' +chatRoomId).set({
     lat:lat,
     lng:lng,
-    guest_ids:[userId],
+    guest_ids:[name],
     maximum_number_users: maxNumUsers,
-    messages:[name,""],
-    owner_id:userId,
+    messages:[],
+    owner_id:name,
     maxNumUsers:maxNumUsers,
     password:password,
     title:title
@@ -85,18 +85,19 @@ function queryFirebase() {
 }
 
 function switchRoom(switchTo){
-  // var newPostRef = firebase.database().ref('/chat_rooms'+currentChat+'/guest_ids/');
-  // ref.child(userId).remove();
+  if currentChat = 'UWM Union'{
+    var newPostRef = firebase.database().ref('/chat_rooms'+currentChat+'/guest_ids/');
+    ref.child(userId).remove();
+  }
 
   currentChat = switchTo;
-  console.log("Switched to room: " + currentChat);
-  var messageRef = firebase.database().ref('/chat_rooms/'+currentChat+'/messages/');
-  messagesArray =  messageRef;
+  console.log("switching to chat room:" + switchTo);
+  messagesArray = new Array;
 
-  // var newPostRef = firebase.database().ref('/chat_rooms'+currentChat+'/guest_ids').push();
-  // var message = userId
-  // firebase.database().ref('chat_rooms/' + currentChat + '/guest_ids/' + newPostRef.key).set({
-  //   userId
-  // });
+  var newPostRef = firebase.database().ref('/chat_rooms'+currentChat+'/guest_ids').push();
+  var message = userId
+  firebase.database().ref('chat_rooms/' + currentChat + '/guest_ids/' + newPostRef.key).set({
+    userId
+  });
 
 }
