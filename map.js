@@ -61,7 +61,8 @@ function addMarkerFromFireabase(childKey, childData) {
 
   marker.addListener('click', function() {
           console.log('clicked on existing chat');
-          switchRoom(childKey);
+          seeIfPasswordExists(childKey);
+          //switchRoom(childKey);
     });
 
   markers.push(location);
@@ -83,7 +84,8 @@ function addMarker(location) {
   markers.push(location);
     marker.addListener('click', function() {
         console.log('switching to new chat room: '+ document.getElementById("ChatRoomTitle").value);
-        switchRoom(document.getElementById("ChatRoomTitle").value);
+        seeIfPasswordExists(document.getElementById("ChatRoomTitle").value);
+        //switchRoom(document.getElementById("ChatRoomTitle").value);
     });
 
 }
@@ -134,10 +136,11 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 function createChatRoomBut() {
   var curpos = markers[markers.length - 1];
   var chatRoomId = document.getElementById("ChatRoomTitle").value;
+  var password = document.getElementById("ChatRoomPassword").value;
   var title = document.getElementById("ChatRoomTitle");
   var userId = name;
 
-  createChatRoom(title, userId, maxNumUsers=10, chatRoomId, curpos.lat, curpos.lng, password="password");
+  createChatRoom(title, userId, maxNumUsers=10, chatRoomId, curpos.lat, curpos.lng, password);
     $('#myModal').modal('hide');
     switchRoom(document.getElementById("ChatRoomTitle").value);
 }

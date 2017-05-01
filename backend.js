@@ -1,11 +1,14 @@
-//Initialize Firebase
-var config = {
-  apiKey: "AIzaSyB7Y5DCEpGeuz37UwuD0humCAHUOW2uJI8",
-  authDomain: "hear-9083d.firebaseapp.com",
-  databaseURL: "https://hear-9083d.firebaseio.com",
-  storageBucket: "hear-9083d.appspot.com",
-  messagingSenderId: "766933243175"
-};
+
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDsG_cgCMM3LQ_HVEYzl6ekypeW8RhobmU",
+    authDomain: "my-awe-3b724.firebaseapp.com",
+    databaseURL: "https://my-awe-3b724.firebaseio.com",
+    projectId: "my-awe-3b724",
+    storageBucket: "my-awe-3b724.appspot.com",
+    messagingSenderId: "655595083565"
+  };
+  firebase.initializeApp(config);
 var firebase;
 firebase.initializeApp(config);
 
@@ -16,6 +19,8 @@ var currentChat = 'UWM Union';
 var name;
 var messagesArray = new Array();
 var timer = setInterval(queryFirebase, 200);
+var chatRoomPass = "password";
+var switchingTo = "";
 
 //Once logged in, get the chat rooms
 function getChatRooms(func){
@@ -83,6 +88,67 @@ function queryFirebase() {
     }
   })
 }
+
+
+
+function getChatRoomPassword(chatRoom){
+  var ref = firebase.database().ref('/chat_rooms/'+chatRoom+'');
+  var password = "password";
+  ref.once("value", function(data) {
+    console.log("getchatRoompassword" + data.val().password);
+    chatRoomPass=data.val().password;
+  });
+  return chatRoomPass;
+}
+
+function seeIfPasswordExists(switchTo){
+  console.log("this is a test" + getChatRoomPassword(switchTo));
+  switchingTo = switchTo;
+  if (getChatRoomPassword(switchTo) == "password"){
+    console.log("we got here!" + getChatRoomPassword(switchTo));
+    switchRoom(switchTo);
+  }
+  else{
+    console.log("Didn't get here" + getChatRoomPassword(switchTo));
+    $('#passwordModal').modal('show');
+  }
+}
+
+function checkThePassword(){
+  console.log("checkingthepassword!!!!");
+
+  var givenPassword = document.getElementById("GuestChatRoomPassword").value;
+
+  console.log("checkingthepassword!!!!" + givenPassword);
+
+  console.log("checkingtheREALpassword!!!!" + chatRoomPass);
+
+  if (givenPassword == chatRoomPass){
+    console.log("theyMatched" + givenPassword);
+
+    switchRoom(switchingTo);
+    $('#passwordModal').modal('hide');
+  }
+}
+
+// Get the modal
+var passwordModal = document.getElementById('passwordModal');
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == passwordModal) {
+    passwordModal.style.display = "none";
+  }
+}
+
+
+
+
+
+
+
+
+
+
 
 function switchRoom(switchTo){
   clearInterval(timer);
