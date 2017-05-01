@@ -11,14 +11,15 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 var range = 10;
-var chatRooms = [0];
-var currentChat = 'NB';
+var chatRooms = [];
+var currentChat = 'UWM Union';
 var name;
 var messagesArray = new Array();
 var timer = setInterval(queryFirebase, 200);
 var chatroomPass = "password";
 var switchingTo = "";
 
+var markerTimer = setInterval(queryMarkers, 2000);
 //Once logged in, get the chat rooms
 function getChatRooms(func){
   return firebase.database().ref('/chat_rooms/').once('value').then(function(snapshot) {
@@ -86,6 +87,15 @@ function queryFirebase() {
   })
 }
 
+function queryMarkers() {
+  var ref = firebase.database().ref('/chat_rooms');
+  ref.limitToLast(25).on("child_added", function(childSnapshot, prevChildKey) {
+    if (!chatRooms.includes(childSnapshot.key)) {
+      addMarkerFromFireabase(childSnapshot.key, childSnapshot.val());
+    }
+  })
+}
+
 function getChatRoomPassword(chatRoom){
   var ref = firebase.database().ref('/chat_rooms/'+chatRoom+'/password');
   var password = "password";
@@ -125,8 +135,10 @@ window.onclick = function(event) {
 
 function switchRoom(switchTo){
   clearInterval(timer);
+  clearInterval(markerTimer);
   currentChat = switchTo;
   messagesArray = new Array;
   $("#messages").empty();
   timer = setInterval(queryFirebase, 200);
+  markerTimer = setInterval(queryMarkers, 2000);
 }
