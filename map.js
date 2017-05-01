@@ -59,7 +59,7 @@ function addMarkerFromFireabase(childKey, childData) {
 
   marker.addListener('click', function() {
           console.log('clicked on existing chat');
-          PasswordCheck(childKey);
+          seeIfPasswordExists(childKey);
     });
 
   markers.push(location);

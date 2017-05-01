@@ -16,6 +16,8 @@ var currentChat = 'NB';
 var name;
 var messagesArray = new Array();
 var timer = setInterval(queryFirebase, 200);
+var chatroomPass = "password";
+var switchingTo = "";
 
 //Once logged in, get the chat rooms
 function getChatRooms(func){
@@ -88,18 +90,37 @@ function getChatRoomPassword(chatRoom){
   var ref = firebase.database().ref('/chat_rooms/'+chatRoom+'/password');
   var password = "password";
   ref.once("value", function(data) {
-    password=data;
+    chatRoomPass=data;
   });
   return password;
 }
 
-function passwordCheck(switchTo){
+function seeIfPasswordExists(switchTo){
+  switchingTo = switchTo;
   if (getChatRoomPassword(switchTo) == "password"){
     switchRoom(switchTo);
   }
-  //else{
-    //todo
-//  }
+  else{
+    $('#passwordModal').modal('show');
+  }
+}
+
+function checkThePassword(){
+  var givenPassword = document.getElementById("GuestChatRoomPassword").value;
+
+  if (givenPassword == chatRoomPass){
+    switchTo(switchingTo);
+    $('#myModal').modal('hide');
+  }
+}
+
+// Get the modal
+var passwordModal = document.getElementById('passwordModal');
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == passwordModal) {
+    passwordModal.style.display = "none";
+  }
 }
 
 function switchRoom(switchTo){
