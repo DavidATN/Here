@@ -85,17 +85,18 @@ function queryFirebase() {
 }
 
 function switchRoom(switchTo){
-  var newPostRef = firebase.database().ref('/chat_rooms'+currentChat+'/guest_ids/');
-  ref.child(userId).remove();
+  // var newPostRef = firebase.database().ref('/chat_rooms'+currentChat+'/guest_ids/');
+  // ref.child(userId).remove();
 
   currentChat = switchTo;
-  console.log("switching to chat room:" + switchTo);
-  messagesArray = new Array;
+  console.log("Switched to room: " + currentChat);
+  var messageRef = firebase.database().ref('/chat_rooms/'+currentChat+'/messages/');
+  messagesArray =  messageRef;
 
-  var newPostRef = firebase.database().ref('/chat_rooms'+currentChat+'/guest_ids').push();
-  var message = userId
-  firebase.database().ref('chat_rooms/' + currentChat + '/guest_ids/' + newPostRef.key).set({
-    userId
-  });
+  // var newPostRef = firebase.database().ref('/chat_rooms'+currentChat+'/guest_ids').push();
+  // var message = userId
+  // firebase.database().ref('chat_rooms/' + currentChat + '/guest_ids/' + newPostRef.key).set({
+  //   userId
+  // });
 
 }
