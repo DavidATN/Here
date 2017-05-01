@@ -77,12 +77,12 @@ function addMarker(location) {
 
     $('#myModal').modal('show');
   //modal.style.display = "block";
-
+    
   markers.push(location);
-    // marker.addListener('click', function() {
-    //     console.log('switching to new chat room');
-    //     switchRoom();
-    // });
+    marker.addListener('click', function() {
+        console.log('switching to new chat room: '+ document.getElementById("ChatRoomTitle").value);
+        switchRoom(document.getElementById("ChatRoomTitle").value);
+    });
 }
 
 
