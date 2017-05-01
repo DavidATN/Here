@@ -26,7 +26,7 @@ html, body, .main_section, .container, .chat_container, .message_section, .row, 
 /* Modal Content */
 .modal-content {
     position: relative;
-    background-color: #fefefe;
+    background-color: rgb(239, 239, 239);
     margin: auto;
     padding: 0;
     border: 1px solid #888;
@@ -66,7 +66,7 @@ html, body, .main_section, .container, .chat_container, .message_section, .row, 
 
 .modal-header {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: #1078bc;
     color: white;
 }
 
@@ -74,7 +74,7 @@ html, body, .main_section, .container, .chat_container, .message_section, .row, 
 
 .modal-footer {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: #1078bc;
     color: white;
 }
 #custom-search-input {
