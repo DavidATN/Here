@@ -11,7 +11,7 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 var range = 10;
-var chatRooms = [0];
+var chatRooms = [];
 var currentChat = 'UWM Union';
 var name;
 var messagesArray = new Array();

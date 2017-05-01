@@ -49,6 +49,7 @@ function initMap() {
 
 // Adds a marker to the map and push to the array.
 function addMarkerFromFireabase(childKey, childData) {
+  chatRooms.push(childKey);
   var lati = childData.lat;
   var long = childData.lng;
   var loc = {lat: lati, lng: long};
@@ -77,7 +78,7 @@ function addMarker(location) {
 
     $('#myModal').modal('show');
   //modal.style.display = "block";
-    
+
   markers.push(location);
     marker.addListener('click', function() {
         console.log('switching to new chat room: '+ document.getElementById("ChatRoomTitle").value);
