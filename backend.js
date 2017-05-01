@@ -99,7 +99,8 @@ function queryFirebase() {
 }
 
 function switchRoom(switchTo){
-  //todo update the chatroom the user is leaving
+  var newPostRef = firebase.database().ref('/chat_rooms'+currentChat+'/guest_ids/');
+  ref.child(userId).remove();
 
   currentChat = switchTo;
   console.log("switching to chat room:" + switchTo);
@@ -107,7 +108,7 @@ function switchRoom(switchTo){
 
   var newPostRef = firebase.database().ref('/chat_rooms'+currentChat+'/guest_ids').push();
   var message = userId
-  firebase.database().ref('chat_rooms/' + currentChat + '/messages/' + newPostRef.key).set({
+  firebase.database().ref('chat_rooms/' + currentChat + '/guest_ids/' + newPostRef.key).set({
     userId
   });
 
