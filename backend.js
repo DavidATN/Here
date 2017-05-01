@@ -12,7 +12,7 @@ firebase.initializeApp(config);
 var database = firebase.database();
 var range = 10;
 var chatRooms = [0];
-var currentChat = 'NB';
+var currentChat = 'UWM Union';
 var name;
 var messagesArray = new Array();
 var timer = setInterval(queryFirebase, 200);
@@ -89,5 +89,7 @@ function switchRoom(switchTo){
   currentChat = switchTo;
   messagesArray = new Array;
   $("#messages").empty();
+  $("#userList").empty();
+  getChatRooms(publishUsers);
   timer = setInterval(queryFirebase, 200);
 }
