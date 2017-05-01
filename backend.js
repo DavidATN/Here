@@ -85,8 +85,10 @@ function queryFirebase() {
 }
 
 function switchRoom(switchTo){
-  var newPostRef = firebase.database().ref('/chat_rooms'+currentChat+'/guest_ids/');
-  ref.child(userId).remove();
+  if currentChat = 'UWM Union'{
+    var newPostRef = firebase.database().ref('/chat_rooms'+currentChat+'/guest_ids/');
+    ref.child(userId).remove();
+  }
 
   currentChat = switchTo;
   console.log("switching to chat room:" + switchTo);
