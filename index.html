@@ -37,6 +37,12 @@ p {line-height: 2}
     <script type="text/javascript">
       // FirebaseUI config.
       var uiConfig = {
+        callbacks: {
+          signInSuccess: function(currentUser, credential, redirectUrl) {
+              name = currentUser.email;
+              return true;
+          },
+        },
         signInSuccessUrl: 'lobby.html',
         signInOptions: [
           // Leave the lines as is for the providers you want to offer your users.

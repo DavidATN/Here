@@ -10,24 +10,15 @@ var firebase;
 firebase.initializeApp(config);
 
 var database = firebase.database();
-var userId = 0;
 var range = 10;
 var chatRooms = [0];
 var currentChat = 'UWM Union';
-var name = "Shahrukh";
+var name;
 var messagesArray = new Array();
-var timer = setInterval(queryFirebase, 200);
+//var timer = setInterval(queryFirebase, 200);
 
-//Need Nickname to navigate to lobby screen
-function userLogin(userId, name, range = 10) {
-  firebase.database().ref('Users/' + userId).set({
-    nickname: name,
-    chatRooms: 0,
-    range : 10
-  });
-  userId=userId;
-  userRange=range;
-  name=name;
+function login() {
+  console.log('Test');
 }
 
 //Once logged in, get the chat rooms
@@ -42,13 +33,13 @@ function getChatRooms(func){
 }
 
 //create a hash of a chatRoomId, give a max number of users, a title, and the users id
-function createChatRoom(title, userId, maxNumUsers=10, chatRoomId, lat, lng, password="password"){
+function createChatRoom(title, name, maxNumUsers=10, chatRoomId, lat, lng, password="password"){
   firebase.database().ref('chat_rooms/' +chatRoomId).set({
     lat:lat,
     lng:lng,
     guest_ids:[0],
     maximum_number_users: maxNumUsers,
-    messages:[userId,""],
+    messages:[name,""],
     owner_id:userId,
     maxNumUsers:maxNumUsers,
     password:password,
