@@ -31,20 +31,13 @@ function initMap() {
   map.addListener('click', function(event) {
     var loc = {lat: event.latLng.lat(), lng: event.latLng.lng()};
     addMarker(loc);
+
   });
 
   setMapOnAll();
     google.maps.event.addListenerOnce(map, 'idle', function() {
         google.maps.event.trigger(map, 'resize');
     });
-
-    for (i = 0; i < markers.length; i++){
-        markers[i].addListener('click', function() {
-            console.log('Test');
-            switchRoom();
-        });
-    }
-
 }
 
 // Adds a marker to the map and push to the array.
@@ -84,12 +77,10 @@ function addMarker(location) {
         console.log('switching to new chat room: '+ document.getElementById("ChatRoomTitle").value);
         switchRoom(document.getElementById("ChatRoomTitle").value);
     });
+
 }
 
-
-
 getChatRooms(addMarkerFromFireabase);
-
 
                                   // Get the modal
 var modal = document.getElementById('myModal');
@@ -136,4 +127,5 @@ function createChatRoomBut() {
 
   createChatRoom(title, userId, maxNumUsers=10, chatRoomId, curpos.lat, curpos.lng, password="password");
     $('#myModal').modal('hide');
+    switchRoom(document.getElementById("ChatRoomTitle").value);
 }

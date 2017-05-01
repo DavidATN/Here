@@ -86,6 +86,7 @@ function queryFirebase() {
 
 function switchRoom(switchTo){
   clearInterval(timer);
+  console.log("switching to " + switchTo);
   currentChat = switchTo;
   messagesArray = new Array;
   $("#messages").empty();
