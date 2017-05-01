@@ -91,6 +91,7 @@ function queryMarkers() {
       addMarkerFromFireabase(childSnapshot.key, childSnapshot.val());
     }
   })
+}
 
 function getChatRoomPassword(chatRoom){
   var ref = firebase.database().ref('/chat_rooms/'+chatRoom+'/password');
