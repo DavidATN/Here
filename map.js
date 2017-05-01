@@ -49,6 +49,7 @@ function initMap() {
 
 // Adds a marker to the map and push to the array.
 function addMarkerFromFireabase(childKey, childData) {
+  chatRooms.push(childKey);
   var lati = childData.lat;
   var long = childData.lng;
   var loc = {lat: lati, lng: long};
