@@ -90,28 +90,23 @@ function queryFirebase() {
 }
 
 
-
-function getChatRoomPassword(chatRoom){
-  var ref = firebase.database().ref('/chat_rooms/'+chatRoom+'');
-  var password = "password";
-  ref.once("value", function(data) {
-    console.log("getchatRoompassword" + data.val().password);
-    chatRoomPass=data.val().password;
-  });
-  return chatRoomPass;
-}
-
 function seeIfPasswordExists(switchTo){
-  console.log("this is a test" + getChatRoomPassword(switchTo));
+
   switchingTo = switchTo;
-  if (getChatRoomPassword(switchTo) == "password"){
-    console.log("we got here!" + getChatRoomPassword(switchTo));
-    switchRoom(switchTo);
-  }
-  else{
-    console.log("Didn't get here" + getChatRoomPassword(switchTo));
-    $('#passwordModal').modal('show');
-  }
+
+  firebase.database().ref('/chat_rooms/'+switchTo).once('value').then(function(snapshot){
+      console.log("the switching to" + snapshot.val().password);
+      var chatRoomPass=snapshot.val().password;
+
+      if (snapshot.val().password == "password"){
+        console.log("we got here!" + snapshot.val().password);
+        switchRoom(switchTo);
+      }
+      else{
+        console.log("Didn't get here" + snapshot.val().password);
+        $('#passwordModal').modal('show');
+      }
+    });
 }
 
 function checkThePassword(){
@@ -119,17 +114,18 @@ function checkThePassword(){
 
   var givenPassword = document.getElementById("GuestChatRoomPassword").value;
 
-  console.log("checkingthepassword!!!!" + givenPassword);
+  firebase.database().ref('/chat_rooms/'+switchingTo).once('value').then(function(snapshot){
+      console.log("the switching to" + snapshot.val().password);
+      var chatRoomPass=snapshot.val().password;
 
-  console.log("checkingtheREALpassword!!!!" + chatRoomPass);
+      if (snapshot.val().password == givenPassword){
+        console.log("theyMatched" + givenPassword);
+        switchRoom(switchingTo);
+        $('#passwordModal').modal('hide');
+      }
+    });
 
-  if (givenPassword == chatRoomPass){
-    console.log("theyMatched" + givenPassword);
-
-    switchRoom(switchingTo);
-    $('#passwordModal').modal('hide');
   }
-}
 
 // Get the modal
 var passwordModal = document.getElementById('passwordModal');
