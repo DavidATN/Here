@@ -84,8 +84,8 @@ function addMarker(location) {
   markers.push(location);
     marker.addListener('click', function() {
         console.log('switching to new chat room: '+ document.getElementById("ChatRoomTitle").value);
-        seeIfPasswordExists(document.getElementById("ChatRoomTitle").value);
-        //switchRoom(document.getElementById("ChatRoomTitle").value);
+        //seeIfPasswordExists(document.getElementById("ChatRoomTitle").value);
+        switchRoom(document.getElementById("ChatRoomTitle").value);
     });
 
 }
@@ -137,6 +137,9 @@ function createChatRoomBut() {
   var curpos = markers[markers.length - 1];
   var chatRoomId = document.getElementById("ChatRoomTitle").value;
   var password = document.getElementById("ChatRoomPassword").value;
+  if (password==""){
+    password="password";
+  }
   var title = document.getElementById("ChatRoomTitle");
   var userId = name;
 
