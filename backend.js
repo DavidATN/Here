@@ -88,8 +88,6 @@ function switchRoom(switchTo){
   clearInterval(timer);
   currentChat = switchTo;
   messagesArray = new Array;
-
   $("#messages").empty();
-
   timer = setInterval(queryFirebase, 200);
 }
