@@ -11,8 +11,8 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 var range = 10;
-var chatRooms = [];
-var currentChat = 'UWM Union';
+var chatRooms = [0];
+var currentChat = 'NB';
 var name;
 var messagesArray = new Array();
 var timer = setInterval(queryFirebase, 200);
@@ -84,12 +84,28 @@ function queryFirebase() {
   })
 }
 
+function getChatRoomPassword(chatRoom){
+  var ref = firebase.database().ref('/chat_rooms/'+chatRoom+'/password');
+  var password = "password";
+  ref.once("value", function(data) {
+    password=data;
+  });
+  return password;
+}
+
+function passwordCheck(switchTo){
+  if (getChatRoomPassword(switchTo) == "password"){
+    switchRoom(switchTo);
+  }
+  //else{
+    //todo
+//  }
+}
+
 function switchRoom(switchTo){
   clearInterval(timer);
   currentChat = switchTo;
   messagesArray = new Array;
   $("#messages").empty();
-  $("#userList").empty();
-  getChatRooms(publishUsers);
   timer = setInterval(queryFirebase, 200);
 }

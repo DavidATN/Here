@@ -49,7 +49,6 @@ function initMap() {
 
 // Adds a marker to the map and push to the array.
 function addMarkerFromFireabase(childKey, childData) {
-  chatRooms.push(childKey);
   var lati = childData.lat;
   var long = childData.lng;
   var loc = {lat: lati, lng: long};
@@ -60,7 +59,7 @@ function addMarkerFromFireabase(childKey, childData) {
 
   marker.addListener('click', function() {
           console.log('clicked on existing chat');
-          switchRoom(childKey);
+          PasswordCheck(childKey);
     });
 
   markers.push(location);
@@ -96,16 +95,6 @@ var modal = document.getElementById('myModal');
 
 // Get the button that opens the modal
 var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-//var spansd = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal
-
-// When the user clicks on <span> (x), close the modal
-// spansd.onclick = function() {
-//     modal.style.display = "none";
-// }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
